@@ -1,619 +1,467 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Galaxia de Flores Amarillas Alex Dev</title>
-
-    <!--
-
-Contáctame:
-
-   * Crea tus diseños sin código
- https://comparte-amor.vercel.app/
-
-    * Invitame un café
- https://buymeacoffee.com/alexx.dev
-
-    * Portafolio Web
- https://alexxdev.vercel.app
-
-    * Sigueme en tiktok
- https://www.tiktok.com/@alexx.dev?is_from_webapp=1&sender_device=pc
- 
-    * Canal de WhatsApp
- https://whatsapp.com/channel/0029VazQEXq90x2vIdNkrH1p
-
- 
-   * WhatsApp: +52 5587450945
-https://wa.me/525568916053
-
-
--->
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      overflow: hidden;
-    }
-
-    *{
-        cursor: url('flor.png'), auto !important;
-
-    }
-
-    #container {
-      width: 100vw;
-      height: 100vh;
-      background: radial-gradient(circle at center, #111100 0%, #000000 100%);
-      position: fixed;
-      top: 0;
-      left: 0;
-    }
-
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
-
-    #modalCarta {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
-      z-index: 100;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    #modalCarta.show {
-      display: flex;
-      opacity: 1;
-    }
-
-    #cartaImg {
-      max-width: 90vw;
-      max-height: 80vh;
-      border-radius: 15px;
-      box-shadow: 0 0 30px rgba(255, 204, 0, 0.6);
-      object-fit: contain;
-      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    #cerrarModal {
-      margin-top: 20px;
-      padding: 10px 30px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
-      background-color: #ffcc00;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
-      transition: transform 0.2s ease, background-color 0.2s ease;
-    }
-
-    #cerrarModal:active {
-      transform: scale(0.95);
-    }
-
-    @keyframes popIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Milena ❤️ — De Joel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        wine: '#722F37',
+                        rose: { 950: '#4c0519', 900: '#881337', 800: '#9f1239', 500: '#f43f5e', 300: '#fda4af' }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                        script: ['"Dancing Script"', 'cursive'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background: radial-gradient(ellipse at top, #2d0a1a 0%, #1a0610 50%, #0d0308 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-strong {
+            background: rgba(20, 5, 15, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #fda4af 0%, #fb7185 50%, #e11d48 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-romantic {
+            background: linear-gradient(135deg, #e11d48 0%, #9f1239 100%);
+            box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-romantic:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px -5px rgba(225, 29, 72, 0.6);
+        }
+        .heart-bg {
+            position: fixed;
+            font-size: 24px;
+            animation: floatUp linear infinite;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.6; transform: translateY(90vh) scale(1); }
+            90% { opacity: 0.4; }
+            100% { transform: translateY(-10vh) scale(0.8); opacity: 0; }
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .section-view { display: none; }
+        .section-view.active { display: block; animation: fadeInUp 0.6s ease-out; }
+    </style>
 </head>
+<body class="text-white font-sans antialiased overflow-x-hidden">
 
-<body>
-  <div id="container"></div>
+    <!-- Corazones de fondo -->
+    <div id="hearts-container"></div>
 
-  <div id="modalCarta">
-    <img id="cartaImg" src="" alt="Carta">
-    <button id="cerrarModal">Cerrar</button>
-  </div>
+    <!-- Pantalla de Bienvenida -->
+    <div id="welcome-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center p-6 text-center bg-rose-950/95 backdrop-blur-xl transition-opacity duration-700">
+        <h1 class="font-serif text-5xl md:text-7xl mb-6 gradient-text animate-fade-in-up">Hola, Milena ❤️</h1>
+        <p class="text-lg md:text-xl text-rose-200 mb-4 max-w-md animate-fade-in-up" style="animation-delay: 0.2s">
+            Esta pequeña parte del mundo fue creada especialmente para ti.
+        </p>
+        <p class="font-script text-2xl md:text-3xl text-rose-300 mb-10 animate-fade-in-up" style="animation-delay: 0.4s">
+            De Joel, el chico que quiere acompañarte, cuidarte y estar a tu lado siempre.
+        </p>
+        <button onclick="enterApp()" class="btn-romantic text-white font-semibold py-4 px-10 rounded-full text-lg animate-fade-in-up" style="animation-delay: 0.6s">
+            Entrar a nuestro mundo ❤️
+        </button>
+    </div>
 
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "https://unpkg.com/three@0.162.0/build/three.module.js",
-        "three/addons/": "https://unpkg.com/three@0.162.0/examples/jsm/"
-      }
-    }
-  </script>
-
-  <script type="module">
-    import * as THREE from 'three';
-    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-
-    const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(0x000000, 0.0015);
-
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 4, 18); 
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    document.getElementById('container').appendChild(renderer.domElement);
-
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.autoRotate = false; 
-    controls.enabled = false; 
-
-    const textureLoader = new THREE.TextureLoader();
-
-
-    const flowerExplosionGroup = new THREE.Group();
-    scene.add(flowerExplosionGroup);
-    const explFlowers = [];
-    const fUrls = ["flor1.png", "flor2.png", "flor3.png", "flor4.png", "flor5.png", "flor6.png", "flor7.png"];
-    
-    fUrls.forEach(url => {
-      for(let k=0; k<15; k++) { 
-        const tex = textureLoader.load(url);
-        tex.colorSpace = THREE.SRGBColorSpace; 
-        const sprite = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex }));
+    <!-- App Principal -->
+    <div id="main-app" class="hidden relative z-10 pb-24 md:pb-10">
         
-        sprite.position.set(
-          (Math.random() - 0.5) * 150,
-          (Math.random() - 0.5) * 150,
-          - (Math.random() * 400) 
-        );
-        
-        const s = Math.random() * 2.5 + 1.5;
-        sprite.scale.set(s, s, 1);
-        
-        flowerExplosionGroup.add(sprite);
-        explFlowers.push(sprite);
-      }
-    });
+        <!-- Reproductor de Música -->
+        <div class="fixed top-4 right-4 z-40 glass rounded-full px-4 py-2 flex items-center gap-3">
+            <button id="music-btn" onclick="toggleMusic()" class="w-10 h-10 rounded-full bg-rose-600/30 flex items-center justify-center hover:bg-rose-600/50 transition-all">
+                🎵
+            </button>
+            <input type="range" min="0" max="100" value="50" class="w-20 accent-rose-500" oninput="changeVolume(this.value)">
+        </div>
+        <audio id="bg-music" loop>
+            <source src="assets/music/romantic.mp3" type="audio/mpeg">
+        </audio>
 
-    const galaxyGroup = new THREE.Group();
-    scene.add(galaxyGroup);
-    galaxyGroup.visible = false; 
-    galaxyGroup.scale.set(0, 0, 0); 
+        <!-- Navegación Superior (Desktop) / Inferior (Mobile) -->
+        <nav class="fixed bottom-0 md:top-0 md:bottom-auto left-0 right-0 glass-strong z-40 px-4 py-3 md:py-4">
+            <div class="max-w-5xl mx-auto flex justify-around md:justify-center md:gap-12">
+                <button onclick="showSection('home')" class="nav-btn active flex flex-col md:flex-row items-center gap-1 md:gap-2 text-rose-300 hover:text-white transition-colors" data-section="home">
+                    <span class="text-xl">🏠</span><span class="text-xs md:text-sm font-medium">Inicio</span>
+                </button>
+                <button onclick="showSection('mood')" class="nav-btn flex flex-col md:flex-row items-center gap-1 md:gap-2 text-rose-300 hover:text-white transition-colors" data-section="mood">
+                    <span class="text-xl">😊</span><span class="text-xs md:text-sm font-medium">Ánimo</span>
+                </button>
+                <button onclick="showSection('letters')" class="nav-btn flex flex-col md:flex-row items-center gap-1 md:gap-2 text-rose-300 hover:text-white transition-colors" data-section="letters">
+                    <span class="text-xl">💌</span><span class="text-xs md:text-sm font-medium">Cartas</span>
+                </button>
+                <button onclick="showSection('photos')" class="nav-btn flex flex-col md:flex-row items-center gap-1 md:gap-2 text-rose-300 hover:text-white transition-colors" data-section="photos">
+                    <span class="text-xl">📸</span><span class="text-xs md:text-sm font-medium">Recuerdos</span>
+                </button>
+            </div>
+        </nav>
 
-    function createGlowMaterial(color, size = 128) {
-      const canvas = document.createElement('canvas');
-      canvas.width = canvas.height = size;
-      const context = canvas.getContext('2d');
-      const gradient = context.createRadialGradient(size/2, size/2, 0, size/2, size/2, size/2);
-      gradient.addColorStop(0, color);
-      gradient.addColorStop(1, 'rgba(0,0,0,0)');
-      context.fillStyle = gradient;
-      context.fillRect(0, 0, size, size);
-      return new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(canvas), transparent: true, blending: THREE.AdditiveBlending }));
-    }
+        <!-- SECCIÓN: INICIO -->
+        <section id="home" class="section-view active max-w-4xl mx-auto px-6 pt-10 md:pt-20">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-4xl md:text-6xl mb-4 gradient-text">Para Milena</h2>
+                <p class="text-rose-200 text-lg">Un espacio seguro, bonito y solo para ti.</p>
+            </div>
 
-    const centralGlow = createGlowMaterial('rgba(255, 230, 100, 0.8)', 256);
-    centralGlow.scale.set(8, 8, 1);
-    galaxyGroup.add(centralGlow); 
+            <div class="grid md:grid-cols-2 gap-6 mb-16">
+                <div onclick="showSection('mood')" class="glass p-8 rounded-3xl cursor-pointer hover:bg-white/10 transition-all group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">🫂</div>
+                    <h3 class="font-serif text-2xl mb-2">¿Cómo estás hoy?</h3>
+                    <p class="text-rose-200/80 text-sm">Cuéntame cómo te sientes y te acompañaré como mereces.</p>
+                </div>
+                <div onclick="showSection('letters')" class="glass p-8 rounded-3xl cursor-pointer hover:bg-white/10 transition-all group">
+                    <div class="text-5xl mb-4 group-hover:scale-110 transition-transform">💌</div>
+                    <h3 class="font-serif text-2xl mb-2">Cartas de Joel</h3>
+                    <p class="text-rose-200/80 text-sm">Palabras para cuando necesites un abrazo a distancia.</p>
+                </div>
+            </div>
 
-    for (let i = 0; i < 15; i++) {
-      const hue = 40 + Math.random() * 25;
-      const nebula = createGlowMaterial(`hsla(${hue}, 100%, 50%, 0.3)`, 256);
-      nebula.scale.set(10 + Math.random() * 20, 10 + Math.random() * 20, 1);
-      nebula.position.set((Math.random() - 0.5) * 40, (Math.random() - 0.5) * 40, (Math.random() - 0.5) * 40);
-      galaxyGroup.add(nebula); 
-    }
+            <!-- Mensaje de Joel -->
+            <div class="glass-strong p-8 md:p-12 rounded-3xl text-center max-w-2xl mx-auto border-rose-500/20">
+                <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-rose-500 to-wine flex items-center justify-center text-4xl shadow-lg shadow-rose-900/50">
+                    👨‍💻
+                </div>
+                <h3 class="font-serif text-2xl md:text-3xl mb-6 italic">"No quiero estar solamente en tus días felices; también quiero estar cuando necesites que alguien se quede."</h3>
+                <p class="font-script text-2xl text-rose-300">— Joel, el chico que te quiere siempre.</p>
+            </div>
+        </section>
 
-    const galaxyParams = {
-      count: 100000, arms: 4, radius: 10, spin: 2, randomness: 0.3, randomnessPower: 3,
-      insideColor: new THREE.Color(0xffcc00), 
-      outsideColor: new THREE.Color(0xffff66) 
-    };
+        <!-- SECCIÓN: ÁNIMO -->
+        <section id="mood" class="section-view max-w-4xl mx-auto px-6 pt-10 md:pt-20">
+            <h2 class="font-serif text-3xl md:text-4xl text-center mb-2 gradient-text">¿Cómo te sientes hoy, Milena?</h2>
+            <p class="text-center text-rose-200 mb-10">Toca una opción y te prepararé algo especial.</p>
 
-    const positions = new Float32Array(galaxyParams.count * 3);
-    const colors = new Float32Array(galaxyParams.count * 3);
+            <div class="grid grid-cols-3 md:grid-cols-5 gap-4 mb-10" id="mood-grid">
+                <!-- Se llena con JS -->
+            </div>
 
-    for (let i = 0; i < galaxyParams.count; i++) {
-      const i3 = i * 3;
-      const radius = Math.pow(Math.random(), galaxyParams.randomnessPower) * galaxyParams.radius;
-      const branchAngle = ((i % galaxyParams.arms) / galaxyParams.arms) * Math.PI * 2;
-      const totalAngle = branchAngle + (radius * galaxyParams.spin);
-      
-      positions[i3]     = Math.cos(totalAngle) * radius + (Math.random() - 0.5) * galaxyParams.randomness * radius;
-      positions[i3 + 1] = (Math.random() - 0.5) * galaxyParams.randomness * radius * 0.5;
-      positions[i3 + 2] = Math.sin(totalAngle) * radius + (Math.random() - 0.5) * galaxyParams.randomness * radius;
-      
-      const mixedColor = galaxyParams.insideColor.clone();
-      mixedColor.lerp(galaxyParams.outsideColor, radius / galaxyParams.radius);
-      mixedColor.multiplyScalar(0.7 + 0.3 * Math.random());
-      colors[i3] = mixedColor.r; colors[i3 + 1] = mixedColor.g; colors[i3 + 2] = mixedColor.b;
-    }
+            <div id="mood-response" class="hidden glass-strong p-8 rounded-3xl border-rose-500/20 animate-fade-in-up">
+                <p id="mood-phrase" class="font-serif text-xl md:text-2xl text-center mb-6 leading-relaxed"></p>
+                <div class="bg-white/5 p-6 rounded-2xl mb-6">
+                    <h4 class="font-semibold text-rose-300 mb-2 flex items-center gap-2">✨ Un pequeño consejo de Joel:</h4>
+                    <p id="mood-activity" class="text-rose-100"></p>
+                </div>
+                <div class="text-center">
+                    <button onclick="openMoodLetter()" class="btn-romantic text-white py-3 px-8 rounded-full font-medium">
+                        Leer una carta para este momento 💌
+                    </button>
+                </div>
+            </div>
+        </section>
 
-    const galaxyGeom = new THREE.BufferGeometry();
-    galaxyGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    galaxyGeom.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-    const galaxyMat = new THREE.PointsMaterial({ size: 0.02, vertexColors: true, depthWrite: false, blending: THREE.AdditiveBlending });
-    
-    const galaxy = new THREE.Points(galaxyGeom, galaxyMat);
-    galaxyGroup.add(galaxy);
+        <!-- SECCIÓN: CARTAS -->
+        <section id="letters" class="section-view max-w-4xl mx-auto px-6 pt-10 md:pt-20">
+            <h2 class="font-serif text-3xl md:text-4xl text-center mb-10 gradient-text">Cartas para ti 💌</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-16" id="letters-grid">
+                <!-- Se llena con JS -->
+            </div>
 
- 
-    const starGeom = new THREE.BufferGeometry();
-    const starCount = 8000;
-    const starPositions = new Float32Array(starCount * 3);
-    for (let i = 0; i < starCount; i++) {
-      starPositions[i * 3] = (Math.random() - 0.5) * 400;
-      starPositions[i * 3 + 1] = (Math.random() - 0.5) * 400;
-      starPositions[i * 3 + 2] = (Math.random() - 0.5) * 400;
-    }
-    starGeom.setAttribute('position', new THREE.BufferAttribute(starPositions, 3));
-    const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.5, transparent: true });
-    const stars = new THREE.Points(starGeom, starMat);
-    scene.add(stars);
+            <!-- Notas -->
+            <div class="glass p-8 rounded-3xl">
+                <h3 class="font-serif text-2xl mb-4 text-center">Déjame saber cómo estás 🤍</h3>
+                <textarea id="note-input" class="w-full bg-white/5 border border-white/10 rounded-2xl p-4 text-white placeholder-rose-200/50 focus:outline-none focus:border-rose-500/50 focus:ring-1 focus:ring-rose-500/50 transition-all resize-none h-32 mb-4" placeholder="Escribe cómo te sientes, qué pasó hoy, o una nota para Joel..."></textarea>
+                <button onclick="saveNote()" class="w-full btn-romantic text-white py-3 rounded-xl font-medium">Guardar mi nota 💝</button>
+                
+                <div id="notes-list" class="mt-8 space-y-4 max-h-96 overflow-y-auto hide-scrollbar">
+                    <!-- Notas guardadas -->
+                </div>
+            </div>
+        </section>
 
-  
-    const cometGroup = new THREE.Group();
-    scene.add(cometGroup);
-    const comets = [];
+        <!-- SECCIÓN: RECUERDOS -->
+        <section id="photos" class="section-view max-w-4xl mx-auto px-6 pt-10 md:pt-20">
+            <h2 class="font-serif text-3xl md:text-4xl text-center mb-2 gradient-text">Nuestros momentos 📸</h2>
+            <p class="text-center text-rose-200 mb-10 italic">"No importa dónde estemos, siempre quiero encontrar una forma de estar a tu lado."</p>
+            
+            <div class="grid md:grid-cols-2 gap-6" id="photos-grid">
+                <!-- Se llena con JS -->
+            </div>
+        </section>
 
-    function createCometMesh() {
-      const group = new THREE.Group();
-      const head = new THREE.Mesh(
-        new THREE.SphereGeometry(0.15, 8, 8),
-        new THREE.MeshBasicMaterial({ color: 0xffffee })
-      );
-      group.add(head);
-      
-      const tailGeo = new THREE.ConeGeometry(0.2, 8, 8);
-      tailGeo.translate(0, -4, 0);
-      const tail = new THREE.Mesh(
-        tailGeo,
-        new THREE.MeshBasicMaterial({ 
-          color: 0xffff88, 
-          transparent: true, opacity: 0.4, 
-          blending: THREE.AdditiveBlending, depthWrite: false 
-        })
-      );
-      group.add(tail);
-      return group;
-    }
+    </div>
 
-    function resetComet(comet) {
-      comet.position.set(
-        (Math.random() - 0.5) * 300,
-        150 + Math.random() * 100, 
-        (Math.random() - 0.5) * 300
-      );
-      comet.userData.velocity = new THREE.Vector3(
-        (Math.random() - 0.5) * 3,
-        - (Math.random() * 2 + 2),
-        (Math.random() - 0.5) * 3
-      ).normalize().multiplyScalar(Math.random() * 3 + 2); 
-      comet.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), comet.userData.velocity.clone().normalize());
-    }
+    <!-- Modal de Carta -->
+    <div id="letter-modal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="glass-strong w-full max-w-lg rounded-3xl p-8 md:p-10 relative animate-fade-in-up">
+            <button onclick="closeModal('letter-modal')" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">✕</button>
+            <h3 id="modal-letter-title" class="font-serif text-3xl text-center mb-2 gradient-text"></h3>
+            <p id="modal-letter-subtitle" class="text-center text-rose-300 italic mb-8"></p>
+            <div id="modal-letter-body" class="text-rose-100 leading-relaxed mb-8 whitespace-pre-line text-lg"></div>
+            <p id="modal-letter-signature" class="font-script text-2xl text-right text-rose-300"></p>
+        </div>
+    </div>
 
-    for(let i = 0; i < 12; i++) { 
-      const c = createCometMesh();
-      resetComet(c);
-      cometGroup.add(c);
-      comets.push(c);
-    }
+    <script>
+        // --- DATOS ---
+        const moodsData = [
+            { key: 'happy', emoji: '😊', label: 'Feliz', phrase: 'Tu sonrisa merece quedarse mucho tiempo más. Que este día te abrace tanto como tú abrazas la vida.', activity: 'Baila una canción que te haga sonreír. Cierra los ojos y siente la música.', letterId: 'happy' },
+            { key: 'sad', emoji: '😔', label: 'Triste', phrase: 'Está bien no estar bien todos los días, Milena. No tienes que cargar con todo sola. Aquí estoy yo.', activity: 'Respira profundo 4 veces. Inhala en 4s, sostén 4s, exhala en 6s. Estoy contigo.', letterId: 'sad' },
+            { key: 'tired', emoji: '😴', label: 'Cansada', phrase: 'Descansa, Milena. No tienes que ser fuerte todo el tiempo. Yo cuido de ti mientras duermes.', activity: 'Tómate 5 minutos sin pantallas. Solo tú, tu respiración y el silencio.', letterId: 'tired' },
+            { key: 'anxious', emoji: '😰', label: 'Ansiosa', phrase: 'Todo va a estar bien. Una cosa a la vez. Yo te sostengo mientras el mundo se calma.', activity: 'Nombra 5 cosas que puedes ver, 4 que puedes tocar, 3 que puedes oír. Vuelve al presente.', letterId: 'anxious' },
+            { key: 'needLove', emoji: '🥺', label: 'Necesito cariño', phrase: 'Aquí estoy, Milena. Aquí estoy yo. Te quiero, te leo, te abrazo con estas palabras.', activity: 'Ponte la mano en el pecho. Siente tu corazón latir. Ese latido es mío también.', letterId: 'needLove' }
+        ];
 
+        const lettersData = [
+            { id: 'sad', title: 'Para cuando estés triste', subtitle: 'Una carta para abrazarte', content: 'Milena,\n\nSé que hoy pesa todo un poco más. No tienes que explicármelas todas, no tienes que justificarlas.\n\nSolo quiero que sepas una cosa: no estás sola. Ni hoy, ni mañana, ni nunca.\n\nLlora si necesitas llorar. Pero no te escondas de mí. Yo te quiero entera, también en los días grises.\n\nDescansa. Mañana será otro día, y yo seguiré aquí.', signature: '— Joel, el chico que no te suelta la mano' },
+            { id: 'happy', title: 'Para cuando estés feliz', subtitle: 'Para que guardes esta sonrisa', content: 'Milena,\n\nMe encanta cuando estás así. Me encanta saber que hoy el mundo te trató bonito.\n\nGuárdame un pedacito de esta felicidad, ¿sí? De esas que me cuentas con los ojos brillando.\n\nBaila, ríe fuerte, come algo rico. Hoy es tuyo.', signature: '— Joel, que se alegra contigo' },
+            { id: 'tired', title: 'Para cuando estés cansada', subtitle: 'Descansa, yo me quedo', content: 'Milena,\n\nSé que has cargado mucho. Pero hoy te pido un favor: suéltalo un ratito.\n\nNo tienes que ser fuerte ahora. No tienes que responder mensajes. Solo respira.\n\nCierra los ojos. Imagina que te abrazo. Imagina que te digo bajito: "ya puedes descansar".\n\nYo me quedo cuidando todo mientras tú duermes.', signature: '— Joel, que te cuida el sueño' },
+            { id: 'anxious', title: 'Para cuando sientas ansiedad', subtitle: 'Vuelve a tu cuerpo', content: 'Milena,\n\nRespira conmigo. Inhala… uno, dos, tres, cuatro. Sostén… uno, dos, tres, cuatro. Exhala… uno, dos, tres, cuatro, cinco, seis.\n\nLo que sientes es real, pero no es para siempre. Va a pasar. Y yo voy a estar aquí cuando pase.\n\nNo tienes que resolverlo todo hoy. Solo tienes que llegar al siguiente minuto.', signature: '— Joel, que respira contigo' },
+            { id: 'needLove', title: 'Para cuando necesites cariño', subtitle: 'Aquí estoy', content: 'Milena,\n\nSi estás leyendo esto es porque necesitabas un abrazo. Y aquí va, envuelto en palabras.\n\nTe quiero. Te quiero con tus cosas buenas y con las que te cuestan. Te quiero entera.\n\nNo tienes que ganarte mi cariño. Ya lo tienes. Siempre lo tuviste.\n\nPonte la mano en el pecho. Siente ese latido. Ese latido también es mío.', signature: '— Joel, el chico que te quiere siempre' },
+            { id: 'special', title: 'Una carta especial de Joel', subtitle: 'Para ti, solo para ti', content: 'Milena,\n\nQuiero estar en tu vida. No solo en los días de risas y planes, también en los días en los que no quieras hablar.\n\nNo quiero ser un recuerdo bonito de alguien que pasó. Quiero ser el chico que se queda. El que te escucha, el que te acompaña, el que te cuida cuando tú te olvidas de cuidarte.\n\nNo te prometo perfección. Te prometo presencia.\n\nPorque tú, Milena, mereces eso y mucho más. Y yo quiero dártelo.', signature: '— Joel, el chico que quiere estar a tu lado siempre ❤️' }
+        ];
 
-    const heartCount = 15000;
-    const hPos = new Float32Array(heartCount * 3);
-    const hCol = new Float32Array(heartCount * 3);
-    for(let i=0; i < heartCount; i++) {
-      const t = Math.PI * 2 * Math.random();
-      let x = 16 * Math.pow(Math.sin(t), 3);
-      let y = 13 * Math.cos(t) - 5 * Math.cos(2*t) - 2 * Math.cos(3*t) - Math.cos(4*t);
-      let z = (Math.random() - 0.5) * 3;
-      
-      const scale = 0.15, noise = 0.4;
-      hPos[i*3] = x * scale + (Math.random() - 0.5) * noise;
-      hPos[i*3+1] = y * scale + (Math.random() - 0.5) * noise;
-      hPos[i*3+2] = z * scale + (Math.random() - 0.5) * noise;
+        const photosData = [
+            { src: 'assets/photos/foto1.jpg', caption: 'Nosotros ❤️' },
+            { src: 'assets/photos/foto2.jpg', caption: 'Un día bonito juntos' },
+            { src: 'assets/photos/foto3.jpg', caption: 'De esos momentos que quiero repetir' },
+            { src: 'assets/photos/foto4.jpg', caption: 'Tu sonrisa, mi lugar favorito' }
+        ];
 
-      const mixedColor = galaxyParams.insideColor.clone();
-      mixedColor.lerp(galaxyParams.outsideColor, Math.random());
-      hCol[i*3] = mixedColor.r; hCol[i*3+1] = mixedColor.g; hCol[i*3+2] = mixedColor.b;
-    }
-    const heartGeom = new THREE.BufferGeometry();
-    heartGeom.setAttribute('position', new THREE.BufferAttribute(hPos, 3));
-    heartGeom.setAttribute('color', new THREE.BufferAttribute(hCol, 3));
-    const heartParticles = new THREE.Points(heartGeom, galaxyMat);
-    heartParticles.position.set(0, 4, 0);
-    heartParticles.scale.set(0, 0, 0); 
-    scene.add(heartParticles);
+        let currentMoodLetterId = 'special';
 
- 
-    function createElegantText(message) {
-      const canvas = document.createElement('canvas');
-      canvas.width = 800; canvas.height = 160;
-      const ctx = canvas.getContext('2d');
-      ctx.font = "italic bold 65px 'Georgia', serif"; 
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.shadowColor = "#ffcc00";
-      ctx.shadowBlur = 20;
-      ctx.fillStyle = "#ffffff";
-      ctx.fillText(message, 400, 80);
-      return new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(canvas), transparent: true }));
-    }
-
-    const mainText = createElegantText("Te amo 💛🌻");
-    mainText.position.set(0, 4, 0);
-    mainText.scale.set(0, 0, 0); 
-    scene.add(mainText);
-
-    const orbitGroup = new THREE.Group();
-    scene.add(orbitGroup);
-
-    function createSmallTextSprite(message) {
-      const canvas = document.createElement('canvas');
-      canvas.width = 700; canvas.height = 140;
-      const context = canvas.getContext('2d');
-      context.font = "bold 45px Arial";
-      context.textAlign = "center";
-      context.textBaseline = "middle";
-      context.fillStyle = "#ffffff";
-      context.shadowColor = "#ffaa00";
-      context.shadowBlur = 10;
-      context.fillText(message, canvas.width / 2, canvas.height / 2);
-      return new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(canvas), transparent: true }));
-    }
-
-    const romanticTexts = [
-      "Amor de mi vida 💛", "Eres preciosa 🌻", "Me encantas 🌼", "Mi Amor 💛", 
-      "Eres mi todo 🌻", "Te Amo ☀️", "Siempre juntos 💛", "Eres mi sol 🌻", 
-      "Eres única 🌼", "Te adoro 💛", "My Love 🌻", "Amor de mi vida 💛", 
-      "Eres preciosa 🌻", "Me encantas 🌼", "Mi Amor 💛", "Eres mi todo 🌻", 
-      "Te Amo ☀️", "Siempre juntos 💛", "Eres mi sol 🌻", "Eres única 🌼", 
-      "Te adoro 💛", "My Love 🌻"
-    ];
-    
-    const imageUrls = [
-      "4.png", 
-      "5.png",
-      "6.png",
-      "7.png",
-      "8.png",
-    ];
-
-    const totalOrbiters = romanticTexts.length + imageUrls.length;
-
-    for (let i = 0; i < totalOrbiters; i++) {
-      const radius = 6.0 + (i % 3) * 0.8; 
-      const angle = (i / totalOrbiters) * Math.PI * 2;
-      const heights = [-2.5, -0.8, 0.8, 2.5];
-      const yPos = heights[i % 4] + (Math.random() * 0.4 - 0.2);
-
-      let orbiter;
-      
-      if (i % 2 === 0) {
-        const textIndex = Math.floor(i / 2) % romanticTexts.length;
-        orbiter = createSmallTextSprite(romanticTexts[textIndex]);
-        orbiter.scale.set(4.5, 0.9, 1);
-      } else {
-        const imgIndex = Math.floor(i / 2) % imageUrls.length;
-        const tex = textureLoader.load(imageUrls[imgIndex]);
-        tex.colorSpace = THREE.SRGBColorSpace; 
-        
-        orbiter = new THREE.Sprite(new THREE.SpriteMaterial({ map: tex }));
-        orbiter.scale.set(1.5, 1.5, 1);
-        
-        orbiter.userData = {
-          esClickeable: true,
-          cartaUrl: `carta${imgIndex + 1}.png`
-        };
-      }
-
-      orbiter.position.set(Math.cos(angle)*radius, yPos, Math.sin(angle)*radius);
-      orbitGroup.add(orbiter);
-    }
-    orbitGroup.scale.set(0, 0, 0);
-
-    const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
-    const modalCarta = document.getElementById('modalCarta');
-    const cartaImg = document.getElementById('cartaImg');
-    const cerrarModal = document.getElementById('cerrarModal');
-    let isModalOpen = false;
-
-    window.addEventListener('pointerdown', (event) => {
-      if(isModalOpen) return; 
-
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-      raycaster.setFromCamera(mouse, camera);
-
-      const intersects = raycaster.intersectObjects(orbitGroup.children);
-
-      if (intersects.length > 0) {
-        const objetoTocado = intersects[0].object;
-        
-        if (objetoTocado.userData && objetoTocado.userData.esClickeable) {
-          abrirCarta(objetoTocado.userData.cartaUrl);
+        // --- INICIALIZACIÓN ---
+        function init() {
+            renderMoods();
+            renderLetters();
+            renderPhotos();
+            renderNotes();
+            createFloatingHearts();
         }
-      }
-    });
 
-    function abrirCarta(url) {
-      cartaImg.src = url;
-      modalCarta.classList.add('show');
-      isModalOpen = true;
-      controls.enabled = false;
-    }
-
-    cerrarModal.addEventListener('click', () => {
-      modalCarta.classList.remove('show');
-      isModalOpen = false;
-      setTimeout(() => { cartaImg.src = ""; }, 300); 
-      if (stage === 3) controls.enabled = true;
-    });
-
-
-   
-    const clock = new THREE.Clock();
-    let stage = 0; 
-    let timeProgress = 0;
-
-    function easeOutCubic(x) {
-      return 1 - Math.pow(1 - x, 3);
-    }
-
-    function animate() {
-      requestAnimationFrame(animate);
-      const delta = Math.min(clock.getDelta(), 0.1); 
-      const time = clock.getElapsedTime();
-
-      comets.forEach(comet => {
-        comet.position.add(comet.userData.velocity);
-        if (comet.position.y < -200 || Math.abs(comet.position.x) > 300 || Math.abs(comet.position.z) > 300) {
-          resetComet(comet);
+        function enterApp() {
+            document.getElementById('welcome-screen').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('welcome-screen').style.display = 'none';
+                document.getElementById('main-app').classList.remove('hidden');
+                tryPlayMusic();
+            }, 700);
         }
-      });
 
-      if (stage === 0) {
-        timeProgress += delta * 0.3; 
-        
-        const pos = stars.geometry.attributes.position.array;
-        for(let i = 2; i < pos.length; i += 3) {
-          pos[i] += 25; 
-          if(pos[i] > 100) {
-            pos[i] = -200; 
-            pos[i-1] = (Math.random() - 0.5) * 400;
-            pos[i-2] = (Math.random() - 0.5) * 400;
-          }
+        // --- MÚSICA ---
+        function tryPlayMusic() {
+            const audio = document.getElementById('bg-music');
+            audio.volume = 0.4;
+            audio.play().catch(() => {
+                console.log('Autoplay bloqueado. El usuario debe activar el sonido.');
+            });
         }
-        stars.geometry.attributes.position.needsUpdate = true;
 
-        explFlowers.forEach(sprite => {
-          sprite.position.z += 25; 
-          if (sprite.position.z > 50) { 
-            sprite.position.z = -200 - Math.random() * 100;
-            sprite.position.x = (Math.random() - 0.5) * 150;
-            sprite.position.y = (Math.random() - 0.5) * 150;
-          }
-        });
-
-        if (timeProgress >= 1) {
-          stage = 1;
-          timeProgress = 0;
-          galaxyGroup.visible = true; 
+        function toggleMusic() {
+            const audio = document.getElementById('bg-music');
+            const btn = document.getElementById('music-btn');
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = '🎵';
+                btn.classList.add('animate-pulse-slow');
+            } else {
+                audio.pause();
+                btn.innerHTML = '🔇';
+                btn.classList.remove('animate-pulse-slow');
+            }
         }
-      } 
-      else if (stage === 1) {
-        timeProgress += delta * 0.5; 
-        const scale = easeOutCubic(Math.min(timeProgress, 1));
-        
-        galaxyGroup.scale.set(scale, scale, scale);
 
-        const speed = 25 * (1 - scale);
-        
-        const pos = stars.geometry.attributes.position.array;
-        for(let i = 2; i < pos.length; i += 3) {
-          pos[i] += speed > 0.1 ? speed : 0;
-          if(pos[i] > 100) pos[i] = -200;
+        function changeVolume(val) {
+            document.getElementById('bg-music').volume = val / 100;
         }
-        stars.geometry.attributes.position.needsUpdate = true;
 
-        explFlowers.forEach(sprite => {
-          sprite.position.z += speed > 0.1 ? speed : 0;
-          if (sprite.position.z > 50) {
-            sprite.position.z = -200 - Math.random() * 100;
-            sprite.position.x = (Math.random() - 0.5) * 150;
-            sprite.position.y = (Math.random() - 0.5) * 150;
-          }
-        });
-
-        if (timeProgress >= 1) {
-          stage = 2;
-          timeProgress = 0;
+        // --- NAVEGACIÓN ---
+        function showSection(id) {
+            document.querySelectorAll('.section-view').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => {
+                b.classList.remove('active', 'text-white');
+                b.classList.add('text-rose-300');
+            });
+            
+            document.getElementById(id).classList.add('active');
+            const activeBtn = document.querySelector(`.nav-btn[data-section="${id}"]`);
+            if(activeBtn) {
+                activeBtn.classList.add('active', 'text-white');
+                activeBtn.classList.remove('text-rose-300');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-      } 
-      else if (stage === 2) {
-        timeProgress += delta * 0.8; 
-        const scale = easeOutCubic(Math.min(timeProgress, 1));
-        
-        heartParticles.scale.set(scale, scale, scale);
-        orbitGroup.scale.set(scale, scale, scale);
-        mainText.scale.set(5 * scale, 1 * scale, 1); 
 
-        explFlowers.forEach(sprite => {
-          sprite.position.applyAxisAngle(new THREE.Vector3(0,1,0), 0.001);
-        });
-
-        if (timeProgress >= 1) {
-          stage = 3;
-          if(!isModalOpen) controls.enabled = true; 
+        // --- RENDERIZADO ---
+        function renderMoods() {
+            const grid = document.getElementById('mood-grid');
+            grid.innerHTML = moodsData.map(m => `
+                <div onclick="selectMood('${m.key}')" class="glass p-4 rounded-2xl text-center cursor-pointer hover:bg-rose-500/20 transition-all hover:scale-105">
+                    <div class="text-3xl mb-2">${m.emoji}</div>
+                    <div class="text-sm font-medium">${m.label}</div>
+                </div>
+            `).join('');
         }
-      }
 
-      if (!isModalOpen) {
-        if (stage >= 1) galaxyGroup.rotation.y += 0.001;
-        if (stage >= 2) orbitGroup.rotation.y += 0.001;
-
-        if (stage === 3) {
-           stars.rotation.y += 0.0002; 
-           
-           const pulse = 1 + Math.sin(time * 2.5) * 0.03;
-           heartParticles.scale.set(pulse, pulse, pulse);
-           heartParticles.position.y = 4 + Math.sin(time) * 0.2;
-           mainText.position.y = 4 + Math.sin(time) * 0.2;
-           
-           explFlowers.forEach(sprite => {
-             sprite.position.applyAxisAngle(new THREE.Vector3(0,1,0), 0.001);
-           });
+        function selectMood(key) {
+            const mood = moodsData.find(m => m.key === key);
+            currentMoodLetterId = mood.letterId;
+            document.getElementById('mood-phrase').textContent = mood.phrase;
+            document.getElementById('mood-activity').textContent = mood.activity;
+            document.getElementById('mood-response').classList.remove('hidden');
+            document.getElementById('mood-response').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-      }
 
-      controls.update();
-      renderer.render(scene, camera);
-    }
+        function renderLetters() {
+            const grid = document.getElementById('letters-grid');
+            grid.innerHTML = lettersData.map(l => `
+                <div onclick='openLetter("${l.id}")' class="glass p-6 rounded-2xl cursor-pointer hover:bg-rose-500/10 transition-all group border-l-4 border-l-rose-500/50">
+                    <h3 class="font-serif text-xl mb-1 group-hover:text-rose-300 transition-colors">${l.title}</h3>
+                    <p class="text-sm text-rose-200/70">${l.subtitle}</p>
+                </div>
+            `).join('');
+        }
 
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
+        function renderPhotos() {
+            const grid = document.getElementById('photos-grid');
+            grid.innerHTML = photosData.map(p => `
+                <div class="glass rounded-2xl overflow-hidden group">
+                    <div class="aspect-[4/3] bg-rose-900/30 flex items-center justify-center relative overflow-hidden">
+                        <img src="${p.src}" alt="Foto" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="absolute inset-0 hidden flex-col items-center justify-center text-rose-300/50">
+                            <span class="text-5xl mb-2">📷</span>
+                            <span class="text-sm">Foto pendiente</span>
+                        </div>
+                    </div>
+                    <div class="p-4 text-center">
+                        <p class="font-script text-xl text-rose-200">${p.caption}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
 
-    animate();
-  </script>
+        // --- CARTAS (MODAL) ---
+        function openLetter(id) {
+            const letter = lettersData.find(l => l.id === id);
+            if (!letter) return;
+            document.getElementById('modal-letter-title').textContent = letter.title;
+            document.getElementById('modal-letter-subtitle').textContent = letter.subtitle;
+            document.getElementById('modal-letter-body').textContent = letter.content;
+            document.getElementById('modal-letter-signature').textContent = letter.signature;
+            document.getElementById('letter-modal').classList.remove('hidden');
+        }
+
+        function openMoodLetter() {
+            openLetter(currentMoodLetterId);
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // --- NOTAS (LOCALSTORAGE) ---
+        function saveNote() {
+            const input = document.getElementById('note-input');
+            const text = input.value.trim();
+            if (!text) return alert('Escribe algo antes de guardar ❤️');
+
+            const notes = JSON.parse(localStorage.getItem('milena_notes') || '[]');
+            notes.unshift({
+                id: Date.now(),
+                text: text,
+                date: new Date().toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+            });
+            
+            localStorage.setItem('milena_notes', JSON.stringify(notes));
+            input.value = '';
+            renderNotes();
+            
+            // Pequeña animación de éxito
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '¡Guardado con amor! 💝';
+            btn.classList.add('bg-green-600');
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.classList.remove('bg-green-600');
+            }, 2000);
+        }
+
+        function renderNotes() {
+            const notes = JSON.parse(localStorage.getItem('milena_notes') || '[]');
+            const list = document.getElementById('notes-list');
+            if (notes.length === 0) {
+                list.innerHTML = '<p class="text-center text-rose-200/50 italic py-4">Aún no hay notas. Escribe la primera 💕</p>';
+                return;
+            }
+            list.innerHTML = notes.map(n => `
+                <div class="bg-white/5 p-4 rounded-xl border border-white/5">
+                    <p class="text-xs text-rose-300/70 mb-2">${n.date}</p>
+                    <p class="text-rose-100 whitespace-pre-wrap">${n.text}</p>
+                </div>
+            `).join('');
+        }
+
+        // --- CORAZONES FLOTANTES ---
+        function createFloatingHearts() {
+            const container = document.getElementById('hearts-container');
+            const hearts = ['❤️', '💖', '🤍', '🌹'];
+            
+            setInterval(() => {
+                if (document.getElementById('welcome-screen').style.display !== 'none') return;
+                
+                const heart = document.createElement('div');
+                heart.className = 'heart-bg';
+                heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                
+                container.appendChild(heart);
+                setTimeout(() => heart.remove(), 13000);
+            }, 2000);
+        }
+
+        // Iniciar
+        init();
+    </script>
 </body>
-
-
-  <!--
-
-Contáctame:
-
-   * Crea tus diseños sin código
- https://comparte-amor.vercel.app/
-
-    * Invitame un café
- https://buymeacoffee.com/alexx.dev
-
-    * Portafolio Web
- https://alexxdev.vercel.app
-
-    * Sigueme en tiktok
- https://www.tiktok.com/@alexx.dev?is_from_webapp=1&sender_device=pc
- 
-    * Canal de WhatsApp
- https://whatsapp.com/channel/0029VazQEXq90x2vIdNkrH1p
-
- 
-   * WhatsApp: +52 5587450945
-https://wa.me/525568916053
-
-
--->
-
 </html>
